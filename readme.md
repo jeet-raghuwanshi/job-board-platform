@@ -1,5 +1,4 @@
-// start 
-Sure, here's a detailed README file explaining the system design, MERN stack components used, implementation details, and instructions for setting up and operating the job board platform:
+## system design, MERN stack components used, implementation details, and instructions for setting up and operating the job board platform:
 
 # MERN Stack Job Board Platform
 
@@ -80,5 +79,4 @@ The application will now be accessible at `http://localhost:3000` (or the specif
 Contributions to this project are welcome. If you find any issues or want to add new features, please create a new issue or submit a pull request.
 
 ## License
-
-This project is licensed under the [MIT License](LICENSE).
+currently none
