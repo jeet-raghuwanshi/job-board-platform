@@ -1,3 +1,4 @@
+// routes/jobsRoutes.js
 import express from "express";
 import userAuth from "../middlewares/authMiddleware.js";
 import {
@@ -10,17 +11,19 @@ import {
 
 const router = express.Router();
 
-// POST JOB
+// Create a new job post
 router.post("/upload-job", userAuth, createJob);
 
-// IPDATE JOB
+// Update an existing job post
 router.put("/update-job/:jobId", userAuth, updateJob);
 
-// GET JOB POST
+// Get job posts with search and filtering
 router.get("/find-jobs", getJobPosts);
+
+// Get a single job post by ID
 router.get("/get-job-detail/:id", getJobById);
 
-// DELETE JOB POST
+// Delete a job post
 router.delete("/delete-job/:id", userAuth, deleteJobPost);
 
 export default router;
