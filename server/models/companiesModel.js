@@ -1,7 +1,8 @@
+// models/companiesModel.js
 import mongoose, { Schema } from "mongoose";
-import validator from "validator";
-import bcrypt from "bcryptjs";
-import JWT from "jsonwebtoken";
+import validator from "validator"; // Library for validating data
+import bcrypt from "bcryptjs"; // Library for hashing passwords
+import JWT from "jsonwebtoken"; // Library for creating JSON Web Tokens
 
 const companySchema = new Schema({
   name: {
@@ -27,20 +28,20 @@ const companySchema = new Schema({
   jobPosts: [{ type: Schema.Types.ObjectId, ref: "Jobs" }],
 });
 
-// middelwares
+// Middleware to hash the password before saving
 companySchema.pre("save", async function () {
   if (!this.isModified) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-//compare password
+// Method to compare the provided password with the hashed password
 companySchema.methods.comparePassword = async function (userPassword) {
   const isMatch = await bcrypt.compare(userPassword, this.password);
   return isMatch;
 };
 
-//JSON WEBTOKEN
+// Method to generate a JSON Web Token for the company
 companySchema.methods.createJWT = function () {
   return JWT.sign({ userId: this._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: "1d",

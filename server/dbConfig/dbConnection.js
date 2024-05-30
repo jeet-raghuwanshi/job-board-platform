@@ -1,4 +1,3 @@
-// dbConfig/dbConnection.js
 import mongoose from "mongoose";
 
 const dbConnection = async () => {
